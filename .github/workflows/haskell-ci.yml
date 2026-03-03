@@ -213,7 +213,7 @@ jobs:
 
       - name: install elm and elm-test # Step added manually to haskell-ci generated config
         run: |
-          npm install -g elm elm-test
+          npm install -g elm@0.19.1-6 elm-test@0.19.1-revision17
       - name: tests
         run: |
           $CABAL v2-test $ARG_COMPILER $ARG_TESTS $ARG_BENCH all --test-show-details=direct
