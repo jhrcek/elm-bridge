@@ -210,7 +210,10 @@ jobs:
       - name: build
         run: |
           $CABAL v2-build $ARG_COMPILER $ARG_TESTS $ARG_BENCH all --write-ghc-environment-files=always
-
+      - name: setup node # Step added manually to haskell-ci generated config
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: install elm and elm-test # Step added manually to haskell-ci generated config
         run: |
           npm install -g elm@0.19.1-6 elm-test@0.19.1-revision17
