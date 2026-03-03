@@ -223,7 +223,7 @@ jobs:
       - name: run elm-test against haskell generated end-to-end elm test module # Step added manually to haskell-ci generated config
         run: |
           ELM_TEST_PROJECT=${PKGDIR_elm_bridge}/test/current-end-to-end
-          mkdir -p ${ELM_TEST_PROJECT}/tests
+          mkdir -p ${ELM_TEST_PROJECT}/{src,tests}
           $CABAL v2-test $ARG_COMPILER end-to-end-tests --test-options="${ELM_TEST_PROJECT}/tests/MyTests.elm"
           cd ${ELM_TEST_PROJECT}
           elm-test
