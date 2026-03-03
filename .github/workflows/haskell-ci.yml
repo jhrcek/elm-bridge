@@ -222,8 +222,10 @@ jobs:
           $CABAL v2-test $ARG_COMPILER $ARG_TESTS $ARG_BENCH all --test-show-details=direct
       - name: run elm-test against haskell generated end-to-end elm test module # Step added manually to haskell-ci generated config
         run: |
-          $CABAL v2-test $ARG_COMPILER end-to-end-tests --test-options='test/current-end-to-end/tests/MyTests.elm'
-          cd ${PKGDIR_elm_bridge}/test/current-end-to-end/tests
+          ELM_TESTS_DIR=${PKGDIR_elm_bridge}/test/current-end-to-end/tests
+          mkdir -p ${ELM_TESTS_DIR}
+          $CABAL v2-test $ARG_COMPILER end-to-end-tests --test-options="${ELM_TESTS_DIR}/MyTests.elm"
+          cd ${ELM_TESTS_DIR}
           elm-test
       - name: cabal check
         run: |
